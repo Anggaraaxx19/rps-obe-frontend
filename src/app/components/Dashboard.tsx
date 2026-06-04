@@ -19,7 +19,7 @@ export function Dashboard() {
                 const resCpl = await fetch('http://127.0.0.1:8000/api/cpl', { headers: { 'Accept': 'application/json' } });
                 const dCpl = await resCpl.json();
 
-                const resRps = await fetch('http://127.0.0.1:8000/api/rps', { headers: { 'Accept': 'application/json' } });
+                const resRps = await fetch('[https://rpsobee.infinityfreeapp.com', { headers: { 'Accept': 'application/json' } });
                 const dRps = await resRps.json();
 
                 if (dRps.status === 'success') {

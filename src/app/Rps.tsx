@@ -10,7 +10,7 @@ export default function Rps() {
     const ambilData = async () => {
         try {
             // Ditambah header Accept agar data sukses ditarik oleh Dosen
-            const resRps = await fetch('http://127.0.0.1:8000/api/rps', {
+            const resRps = await fetch('[https://rpsobee.infinityfreeapp.com', {
                 headers: { 'Accept': 'application/json' }
             });
             const dRps = await resRps.json();
@@ -31,7 +31,7 @@ export default function Rps() {
     const generateRps = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const r = await fetch('http://127.0.0.1:8000/api/rps', {
+            const r = await fetch('[https://rpsobee.infinityfreeapp.com', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',

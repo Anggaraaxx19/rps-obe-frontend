@@ -2,26 +2,33 @@ import React, { useState, useEffect } from 'react';
 
 export default function CetakRps({ rpsId, onKembali }: { rpsId: number, onKembali: () => void }) {
     const [detailRps, setDetailRps] = useState<any>(null);
-    const [listPertemuan, setListPertemuan] = useState([]);
+    const [listPertemuan, setListPertemuan] = useState<any[]>([]);
 
     useEffect(() => {
         const ambilDetail = async () => {
             try {
-                const resRps = await fetch('http://127.0.0.1:8000/api/rps');
+                // 1. Ambil Data Detail RPS
+                const resRps = await fetch("https://rpsobee.infinityfreeapp.com/api/rps");
                 const dRps = await resRps.json();
-                if(dRps.status === 'success') {
+                if (dRps.status === 'success') {
                     const ditemukan = dRps.data.find((x: any) => x.id === rpsId);
                     setDetailRps(ditemukan);
                 }
 
-                const resPtm = await fetch(`http://127.0.0.1:8000/api/pertemuan/${rpsId}`);
+                // 2. Ambil Data List Pertemuan Berdasarkan RPS ID
+                const resPtm = await fetch(`https://rpsobee.infinityfreeapp.com/api/pertemuan/${rpsId}`);
                 const dPtm = await resPtm.json();
-                if(dPtm.status === 'success') setListPertemuan(dPtm.data);
+                if (dPtm.status === 'success') {
+                    setListPertemuan(dPtm.data);
+                }
             } catch (error) {
                 console.error("Gagal memuat dokumen untuk dicetak:", error);
             }
         };
-        if (rpsId) ambilDetail();
+
+        if (rpsId) {
+            ambilDetail();
+        }
     }, [rpsId]);
 
     if (!detailRps) return <p className="p-6 text-center">Memuat dokumen cetak...</p>;
@@ -99,7 +106,7 @@ export default function CetakRps({ rpsId, onKembali }: { rpsId: number, onKembal
             </div>
 
             {/* KOLOM TANDA TANGAN */}
-            <div className="mt-12 flex justify-between text-center text-xs签名">
+            <div className="mt-12 flex justify-between text-center text-xs">
                 <div className="w-48 space-y-12">
                     <p>Dosen Pengembang,</p>
                     <p className="font-bold underline">{detailRps.dosen_pengembang}</p>

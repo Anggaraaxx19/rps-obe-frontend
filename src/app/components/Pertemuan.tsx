@@ -8,7 +8,7 @@ export default function Pertemuan() {
 
     const ambilRps = async () => {
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/rps');
+            const res = await fetch('[https://rpsobee.infinityfreeapp.com');
             const d = await res.json();
             if(d.status === 'success') setListRps(d.data);
         } catch (error) {
@@ -19,7 +19,7 @@ export default function Pertemuan() {
     const ambilPertemuan = async (rpsId: string) => {
         if (!rpsId) return;
         try {
-            const res = await fetch(`http://127.0.0.1:8000/api/pertemuan/${rpsId}`);
+            const res = await fetch(`[https://rpsobee.infinityfreeapp.com);
             const d = await res.json();
             if(d.status === 'success') setListPertemuan(d.data);
         } catch (error) {
