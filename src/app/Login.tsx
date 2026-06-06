@@ -17,14 +17,17 @@ export default function Login({ onLoginSukses }: LoginProps) {
 
         try {
             // PERBAIKAN UTAMA: Menggunakan URL API lokal murni yang valid
-            const respon = await fetch('http://127.0.0.1:8000/api/login', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
+            const respon = await fetch(
+  'https://rpsobee.infinityfreeapp.com/api/login',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
+  }
+);
 
             const hasil = await respon.json();
 
@@ -39,7 +42,7 @@ export default function Login({ onLoginSukses }: LoginProps) {
                 setError(hasil.message || 'Email atau Password salah!');
             }
         } catch (err) {
-            setError('Gagal terhubung ke server Backend Laravel. Pastikan php artisan serve menyala!');
+            setError('Lau sape mpruy? hacker');
         } finally {
             setLoading(false);
         }

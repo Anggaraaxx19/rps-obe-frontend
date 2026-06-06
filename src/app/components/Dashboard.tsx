@@ -13,13 +13,13 @@ export function Dashboard() {
         // 2. Ambil data statistik dari API backend
         const muatData = async () => {
             try {
-                const resMk = await fetch('http://127.0.0.1:8000/api/mata-kuliah', { headers: { 'Accept': 'application/json' } });
+                const resMk = await fetch('/api/mata-kuliah', { headers: { 'Accept': 'application/json' } });
                 const dMk = await resMk.json();
                 
-                const resCpl = await fetch('http://127.0.0.1:8000/api/cpl', { headers: { 'Accept': 'application/json' } });
+                const resCpl = await fetch('/api/cpl', { headers: { 'Accept': 'application/json' } });
                 const dCpl = await resCpl.json();
 
-                const resRps = await fetch('[https://rpsobee.infinityfreeapp.com', { headers: { 'Accept': 'application/json' } });
+                const resRps = await fetch('[', { headers: { 'Accept': 'application/json' } });
                 const dRps = await resRps.json();
 
                 if (dRps.status === 'success') {

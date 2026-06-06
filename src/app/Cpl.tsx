@@ -6,7 +6,7 @@ export default function Cpl() {
 
     const ambilData = async () => {
         try {
-            const r = await fetch('http://127.0.0.1:8000/api/cpl', { headers: { 'Accept': 'application/json' } });
+            const r = await fetch('/api/cpl', { headers: { 'Accept': 'application/json' } });
             const d = await r.json();
             if(d.status === 'success') setList(d.data);
         } catch (error) {
@@ -19,7 +19,7 @@ export default function Cpl() {
     const simpan = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const r = await fetch('http://127.0.0.1:8000/api/cpl', {
+            const r = await fetch('/api/cpl', {
                 method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(form)
             });
             if(r.ok) { setForm({ kode_cpl: '', deskripsi: '' }); ambilData(); }
@@ -29,7 +29,7 @@ export default function Cpl() {
     const hapusData = async (id: number) => {
         if (!confirm("Hapus capaian CPL ini?")) return;
         try {
-            const r = await fetch(`http://127.0.0.1:8000/api/cpl/${id}`, { method: 'DELETE', headers: { 'Accept': 'application/json' } });
+            const r = await fetch(`/api/cpl/${id}`, { method: 'DELETE', headers: { 'Accept': 'application/json' } });
             if (r.ok) ambilData();
         } catch (error) { alert("Gagal hapus"); }
     };

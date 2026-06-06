@@ -15,7 +15,7 @@ export default function MataKuliah() {
         setSedangMemuat(true);
         try {
             // KUNCI PERBAIKAN 1: URL Fetch Ambil Data Lokal yang Benar
-            const r = await fetch('http://127.0.0.1:8000/api/mata-kuliah', { 
+            const r = await fetch('/api/mata-kuliah', { 
                 headers: { 'Accept': 'application/json' } 
             });
             const d = await r.json();
@@ -33,7 +33,7 @@ export default function MataKuliah() {
         e.preventDefault();
         try {
             // KUNCI PERBAIKAN 2: URL Fetch Simpan Data Lokal yang Benar
-            const r = await fetch('http://127.0.0.1:8000/api/mata-kuliah', {
+            const r = await fetch('/api/mata-kuliah', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json', 
@@ -58,7 +58,7 @@ export default function MataKuliah() {
         if (!confirm("Apakah Anda yakin ingin menghapus data ini?")) return;
         try {
             // KUNCI PERBAIKAN 3: URL Fetch Hapus Data Lokal yang Benar
-            const r = await fetch(`http://127.0.0.1:8000/api/mata-kuliah/${id}`, {
+            const r = await fetch(`/api/mata-kuliah/${id}`, {
                 method: 'DELETE',
                 headers: { 'Accept': 'application/json' }
             });

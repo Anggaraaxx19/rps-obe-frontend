@@ -10,13 +10,13 @@ export default function Rps() {
     const ambilData = async () => {
         try {
             // Ditambah header Accept agar data sukses ditarik oleh Dosen
-            const resRps = await fetch('[https://rpsobee.infinityfreeapp.com', {
+            const resRps = await fetch('[', {
                 headers: { 'Accept': 'application/json' }
             });
             const dRps = await resRps.json();
             if(dRps.status === 'success') setListRps(dRps.data);
 
-            const resMatkul = await fetch('http://127.0.0.1:8000/api/mata-kuliah', {
+            const resMatkul = await fetch('/api/mata-kuliah', {
                 headers: { 'Accept': 'application/json' }
             });
             const dMatkul = await resMatkul.json();
@@ -31,7 +31,7 @@ export default function Rps() {
     const generateRps = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const r = await fetch('[https://rpsobee.infinityfreeapp.com', {
+            const r = await fetch('[', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',

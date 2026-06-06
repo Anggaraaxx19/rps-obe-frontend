@@ -8,7 +8,7 @@ export default function CetakRps({ rpsId, onKembali }: { rpsId: number, onKembal
         const ambilDetail = async () => {
             try {
                 // 1. Ambil Data Detail RPS
-                const resRps = await fetch("https://rpsobee.infinityfreeapp.com/api/rps");
+                const resRps = await fetch("/api/rps");
                 const dRps = await resRps.json();
                 if (dRps.status === 'success') {
                     const ditemukan = dRps.data.find((x: any) => x.id === rpsId);
@@ -16,7 +16,7 @@ export default function CetakRps({ rpsId, onKembali }: { rpsId: number, onKembal
                 }
 
                 // 2. Ambil Data List Pertemuan Berdasarkan RPS ID
-                const resPtm = await fetch(`https://rpsobee.infinityfreeapp.com/api/pertemuan/${rpsId}`);
+                const resPtm = await fetch(`/api/pertemuan/${rpsId}`);
                 const dPtm = await resPtm.json();
                 if (dPtm.status === 'success') {
                     setListPertemuan(dPtm.data);

@@ -5,7 +5,7 @@ export default function Validasi() {
 
     const ambilDataRps = async () => {
         try {
-            const res = await fetch('[https://rpsobee.infinityfreeapp.com');
+            const res = await fetch('[');
             const d = await res.json();
             if(d.status === 'success') setListRps(d.data);
         } catch (error) {
@@ -19,7 +19,7 @@ export default function Validasi() {
 
     const ubahStatusRps = async (id: number, statusBaru: string) => {
         try {
-            const r = await fetch(`[https://rpsobee.infinityfreeapp.com/${id}/validasi`, {
+            const r = await fetch(`[/${id}/validasi`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: statusBaru })

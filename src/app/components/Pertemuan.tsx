@@ -8,7 +8,8 @@ export default function Pertemuan() {
 
     const ambilRps = async () => {
         try {
-            const res = await fetch('[https://rpsobee.infinityfreeapp.com');
+            // Menggunakan URL relatif agar aman saat dideploy satu domain di hosting
+            const res = await fetch('/api/rps');
             const d = await res.json();
             if(d.status === 'success') setListRps(d.data);
         } catch (error) {
@@ -19,7 +20,8 @@ export default function Pertemuan() {
     const ambilPertemuan = async (rpsId: string) => {
         if (!rpsId) return;
         try {
-            const res = await fetch(`[https://rpsobee.infinityfreeapp.com);
+            // PERBAIKAN: Backtick ditutup dengan benar menggunakan URL relatif dinamis
+            const res = await fetch(`/api/pertemuan/${rpsId}`);
             const d = await res.json();
             if(d.status === 'success') setListPertemuan(d.data);
         } catch (error) {
@@ -36,7 +38,8 @@ export default function Pertemuan() {
     const simpanPertemuan = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const r = await fetch('http://127.0.0.1:8000/api/pertemuan', {
+            // Mengubah localhost menjadi URL relatif agar sinkron saat disimpan dari HP
+            const r = await fetch('/api/pertemuan', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...form, rps_id: selectedRps })

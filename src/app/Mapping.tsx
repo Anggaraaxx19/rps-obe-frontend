@@ -21,17 +21,17 @@ export default function Mapping() {
             const tokenHeader = { headers: { 'Accept': 'application/json' } };
 
             // 1. Ambil Data List Mapping Terbaru
-            const resMapping = await fetch('http://127.0.0.1:8000/api/mapping', tokenHeader);
+            const resMapping = await fetch('/api/mapping', tokenHeader);
             const dMapping = await resMapping.json();
             if(dMapping.status === 'success') setListMapping(dMapping.data);
 
             // 2. Ambil Data Dropdown CPL
-            const resCpl = await fetch('http://127.0.0.1:8000/api/cpl', tokenHeader);
+            const resCpl = await fetch('/api/cpl', tokenHeader);
             const dCpl = await resCpl.json();
             if(dCpl.status === 'success') setListCpl(dCpl.data);
 
             // 3. Ambil Data Dropdown CPMK
-            const resCpmk = await fetch('http://127.0.0.1:8000/api/cpmk', tokenHeader);
+            const resCpmk = await fetch('/api/cpmk', tokenHeader);
             const dCpmk = await resCpmk.json();
             if(dCpmk.status === 'success') setListCpmk(dCpmk.data);
 
@@ -53,7 +53,7 @@ export default function Mapping() {
         }
 
         try {
-            const r = await fetch('http://127.0.0.1:8000/api/mapping', {
+            const r = await fetch('/api/mapping', {
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json', 
@@ -78,7 +78,7 @@ export default function Mapping() {
     const hapusMapping = async (id: number) => {
         if (!confirm("Apakah Anda yakin ingin memutus hubungan kompetensi pemetaan ini?")) return;
         try {
-            const r = await fetch(`http://127.0.0.1:8000/api/mapping/${id}`, { 
+            const r = await fetch(`/api/mapping/${id}`, { 
                 method: 'DELETE', 
                 headers: { 'Accept': 'application/json' } 
             });
