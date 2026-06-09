@@ -23,8 +23,10 @@ export default function Mapping() {
             // 1. Ambil Data List Mapping Terbaru
             const resMapping = await fetch('/api/mapping', tokenHeader);
             const dMapping = await resMapping.json();
-            if(dMapping.status === 'success') setListMapping(dMapping.data);
-
+           if(dMapping.status === 'success') {
+    console.log("DATA MAPPING =", dMapping.data);
+    setListMapping(dMapping.data);
+}
             // 2. Ambil Data Dropdown CPL
             const resCpl = await fetch('/api/cpl', tokenHeader);
             const dCpl = await resCpl.json();
@@ -185,7 +187,7 @@ export default function Mapping() {
                                     listMapping.map((item: any, i) => (
                                         <tr key={i} className="hover:bg-slate-50/40 transition-colors">
                                             <td className="p-3 font-semibold text-slate-800">
-    {item.nama_mk || '-'}
+    {JSON.stringify(item)}
 </td>
                                             <td className="p-3 text-center">
                                                 <span className="px-2.5 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 font-bold rounded-md text-[11px] font-mono">
