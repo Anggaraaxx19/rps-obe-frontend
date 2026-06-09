@@ -185,8 +185,8 @@ export default function Mapping() {
                                     listMapping.map((item: any, i) => (
                                         <tr key={i} className="hover:bg-slate-50/40 transition-colors">
                                             <td className="p-3 font-semibold text-slate-800">
-                                                {item.mata_kuliah}
-                                            </td>
+    {item.nama_mk || '-'}
+</td>
                                             <td className="p-3 text-center">
                                                 <span className="px-2.5 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 font-bold rounded-md text-[11px] font-mono">
                                                     {item.kode_cpl}
