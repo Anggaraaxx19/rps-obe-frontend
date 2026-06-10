@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://rpsobee.infinityfreeapp.com/api/:path*"
+    }
+  ]
+}
